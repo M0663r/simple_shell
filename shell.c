@@ -40,7 +40,7 @@ for (i = 0; token != NULL && i < MAX_ARGS - 1; i++)
 argv[i] = token;
 token = strtok(NULL, " ");
 }
-argv[i] = NULL;  // Null-terminate the argument array
+argv[i] = NULL;
         
 if (execve(argv[0], argv, environ) == -1)
 {
