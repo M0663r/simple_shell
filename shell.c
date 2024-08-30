@@ -54,7 +54,7 @@ argv[i] = NULL;
 command_path = find_command_in_path(argv[0]);
 if (command_path == NULL)
 {
-perror("./shell");
+perror("./hsh");
 continue;
 }
 
@@ -62,7 +62,7 @@ child_pid = fork();
 if (child_pid == 0)
 {
 execve(command_path, argv, environ);
-perror("./shell");
+perror("./hsh");
 exit(EXIT_FAILURE);
 }
 else if (child_pid < 0)
