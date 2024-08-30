@@ -59,8 +59,7 @@ int exec_cmd(void)
 		}
 		else
 		{
-			do
-			{
+			do {
 				waitpid(pid, &status, WUNTRACED);
 			} while (!WIFEXITED(status) && !WIFSIGNALED(status));
 		}
