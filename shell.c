@@ -5,13 +5,21 @@
 
 extern char **environ;
 
+#define MAX_ARGS 64  // Maximum number of arguments
+
+/**
+ * main - entry point for code
+ * Return: 0
+*/
 int main(void)
 {
 char *line = NULL;
 size_t len = 0;
 ssize_t nread;
-char *argv[2];
-    
+char *argv[MAX_ARGS];
+char *token;
+int i;
+
 while (1)
 {
 printf("#cisfun$ ");
@@ -25,9 +33,14 @@ break;
 }
         
 line[nread - 1] = '\0';
-        
-argv[0] = line;
-argv[1] = NULL;
+
+token = strtok(line, " ");
+for (i = 0; token != NULL && i < MAX_ARGS - 1; i++)
+{
+argv[i] = token;
+token = strtok(NULL, " ");
+}
+argv[i] = NULL;  // Null-terminate the argument array
         
 if (execve(argv[0], argv, environ) == -1)
 {
@@ -36,6 +49,6 @@ perror("./shell");
 }
     
 free(line);
-return (0);
+return 0;
 }
 
