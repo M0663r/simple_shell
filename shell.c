@@ -5,7 +5,7 @@
 
 extern char **environ;
 
-#define MAX_ARGS 64  // Maximum number of arguments
+#define MAX_ARGS 64
 
 /**
  * main - entry point for code
