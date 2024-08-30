@@ -26,6 +26,8 @@ char *argv[MAX_ARGS];
 char *token;
 int i;
 pid_t child_pid;
+char *command_path;
+
 
 while (1)
 {
@@ -49,7 +51,7 @@ token = strtok(NULL, " ");
 }
 argv[i] = NULL;
 
-char *command_path = find_command_in_path(argv[0]);
+command_path = find_command_in_path(argv[0]);
 if (command_path == NULL)
 {
 perror("./shell");
